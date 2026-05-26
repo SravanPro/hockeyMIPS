@@ -26,7 +26,7 @@ module hockeyTB;
         white=0; black=1; brown=0; red=1;
         gameRst=0; erase=0; draw=0;
         speedInc=0; speedDec=0; sw=0;
-        #100 reset=0;
+        #10000 reset=0; 
         #1000000 $finish;
     end
 

@@ -44,6 +44,7 @@ module parent #(parameter inputs = 256, parameter SIM_MODE = 0)(
 
     wire [8191:0] fb;
     pongFrameBuffer PONG_FB (
+        .clock(clock), .reset(reset),
         .p1Y(r1), .p2Y(r2), .puckX(r3), .puckY(r4),
         .fb(fb)
     );
