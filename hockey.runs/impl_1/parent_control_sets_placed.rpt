@@ -1,0 +1,129 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
+| Date         : Tue May 26 16:03:18 2026
+| Host         : LAPTOP-QR3M58JR running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file parent_control_sets_placed.rpt
+| Design       : parent
+| Device       : xc7z020
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    51 |
+|    Minimum number of control sets                        |    51 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    76 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    51 |
+| >= 0 to < 4        |     6 |
+| >= 4 to < 6        |     2 |
+| >= 6 to < 8        |     4 |
+| >= 8 to < 10       |     3 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     1 |
+| >= 16              |    35 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               6 |            3 |
+| No           | No                    | Yes                    |             438 |          107 |
+| No           | Yes                   | No                     |              12 |            5 |
+| Yes          | No                    | No                     |              31 |           18 |
+| Yes          | No                    | Yes                    |            1111 |          709 |
+| Yes          | Yes                   | No                     |              54 |           25 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------+-----------------------------------------------+------------------+------------------+----------------+--------------+
+|   Clock Signal   |                 Enable Signal                 | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------+-----------------------------------------------+------------------+------------------+----------------+--------------+
+|  t_ff_clk_BUFG   | SPI/sda_i_1_n_0                               | reset_IBUF       |                1 |              1 |         1.00 |
+|  clock_IBUF_BUFG |                                               | reset_IBUF       |                1 |              1 |         1.00 |
+|  t_ff_clk_BUFG   | SPI/res_i_1_n_0                               | reset_IBUF       |                1 |              1 |         1.00 |
+|  t_ff_clk_BUFG   | SPI/cs_i_1_n_0                                | reset_IBUF       |                1 |              1 |         1.00 |
+|  t_ff_clk_BUFG   | SPI/sck_r11_out                               | SPI/sck_i_1_n_0  |                1 |              1 |         1.00 |
+|  t_ff_clk_BUFG   | SPI/spi_load                                  | reset_IBUF       |                1 |              1 |         1.00 |
+|  t_ff_clk_BUFG   | MOVEMENT_DIVIDER/speed[3]_i_1_n_0             | reset_IBUF       |                1 |              4 |         4.00 |
+|  t_ff_clk_BUFG   | SPI/init_idx                                  | reset_IBUF       |                1 |              5 |         5.00 |
+|  t_ff_clk_BUFG   |                                               |                  |                3 |              6 |         2.00 |
+|  t_ff_clk_BUFG   |                                               | SPI/clk_cnt      |                3 |              6 |         2.00 |
+|  t_ff_clk_BUFG   | SPI/shift_reg[6]_i_1_n_0                      | reset_IBUF       |                2 |              6 |         3.00 |
+|  t_ff_clk_BUFG   | SPI/data_byte[7]_i_1_n_0                      |                  |                3 |              7 |         2.33 |
+|  t_ff_clk_BUFG   | PIPELINE/EX_MEM/E[0]                          |                  |                3 |              8 |         2.67 |
+|  t_ff_clk_BUFG   | PIPELINE/EX_MEM/ex_mem_MemWrite_out_reg_0[0]  |                  |                5 |              8 |         1.60 |
+|  t_ff_clk_BUFG   | SPI/col_byte_r[7]_i_1_n_0                     |                  |                7 |              8 |         1.14 |
+|  t_ff_clk_BUFG   | SPI/wait_cnt[13]_i_1_n_0                      | reset_IBUF       |                3 |             14 |         4.67 |
+|  t_ff_clk_BUFG   | SPI/col[6]_i_1_n_0                            | reset_IBUF       |               14 |             24 |         1.71 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_12[0] | reset_IBUF       |               26 |             32 |         1.23 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_10[0] | reset_IBUF       |               24 |             32 |         1.33 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_25[0] | reset_IBUF       |               19 |             32 |         1.68 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_3[0]  | reset_IBUF       |               24 |             32 |         1.33 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_21[0] | reset_IBUF       |               21 |             32 |         1.52 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_16[0] | reset_IBUF       |               18 |             32 |         1.78 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_13[0] | reset_IBUF       |               24 |             32 |         1.33 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_24[0] | reset_IBUF       |               16 |             32 |         2.00 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_20[0] | reset_IBUF       |               24 |             32 |         1.33 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_4[0]  | reset_IBUF       |               26 |             32 |         1.23 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_8[0]  | reset_IBUF       |               23 |             32 |         1.39 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_1[0]  | reset_IBUF       |               23 |             32 |         1.39 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_11[0] | reset_IBUF       |               25 |             32 |         1.28 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_2[0]  | reset_IBUF       |               23 |             32 |         1.39 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_22[0] | reset_IBUF       |               19 |             32 |         1.68 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_14[0] | reset_IBUF       |               27 |             32 |         1.19 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_17[0] | reset_IBUF       |               21 |             32 |         1.52 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_0[0]  | reset_IBUF       |               24 |             32 |         1.33 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_27[0] | reset_IBUF       |               15 |             32 |         2.13 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_6[0]  | reset_IBUF       |               24 |             32 |         1.33 |
+|  t_ff_clk_BUFG   | PIPELINE/ID_EX/E[0]                           | reset_IBUF       |               11 |             32 |         2.91 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/E[0]                          | reset_IBUF       |               24 |             32 |         1.33 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_19[0] | reset_IBUF       |               19 |             32 |         1.68 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_15[0] | reset_IBUF       |               21 |             32 |         1.52 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_18[0] | reset_IBUF       |               18 |             32 |         1.78 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_23[0] | reset_IBUF       |               16 |             32 |         2.00 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_26[0] | reset_IBUF       |               16 |             32 |         2.00 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_5[0]  | reset_IBUF       |               27 |             32 |         1.19 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_7[0]  | reset_IBUF       |               26 |             32 |         1.23 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_9[0]  | reset_IBUF       |               24 |             32 |         1.33 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_28[0] | reset_IBUF       |               19 |             34 |         1.79 |
+|  t_ff_clk_BUFG   | PIPELINE/MEM_WB/mem_wb_RegWrite_out_reg_29    | reset_IBUF       |               21 |             41 |         1.95 |
+|  t_ff_clk_BUFG   | PIPELINE/IF_ID/if_id_NPC_out[31]_i_1_n_0      | reset_IBUF       |               20 |             72 |         3.60 |
+|  t_ff_clk_BUFG   |                                               | reset_IBUF       |              108 |            443 |         4.10 |
++------------------+-----------------------------------------------+------------------+------------------+----------------+--------------+
+
+
