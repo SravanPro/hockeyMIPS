@@ -1,0 +1,4 @@
+Running: xsim.dir/hockeyTB_behav/xsimk.exe -simmode gui -wdb hockeyTB_behav.wdb -simrunnum 0 -socket 53233
+Design successfully loaded
+Design Loading Memory Usage: 12080 KB (Peak: 12080 KB)
+Design Loading CPU Usage: 171 ms
