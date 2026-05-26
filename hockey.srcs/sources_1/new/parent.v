@@ -14,37 +14,29 @@ module parent #(parameter inputs = 256, parameter SIM_MODE = 0)(
     output [3:0] speedOut
 );
 
-    tff TFF (
-        .clock(clock),
-        .reset(reset),
-        .t(1'b1),
-        .q(t_ff_clk)
-    );
-
-    wire rightRaw, leftRaw, upRaw, downRaw, eraseRaw, drawRaw;
-    analogTranslator ANALOG_TRANSLATOR (
-        .white(white), .black(black), .brown(brown), .red(red),
-        .right(rightRaw), .left(leftRaw), .up(upRaw), .down(downRaw)
-    );
+    wire divClock, halfClock;
+    clockDivider CLOCK_DIVIDER(
+        .clock(clock), .reset(reset),
+        .speedInc(speedInc), .speedDec(speedDec),
+        .divClock(divClock), .halfClock(halfClock),
+        .speedOut(speedOut)
+        
+);
 
     wire right, left, up, down;
-    wire right2, left2;
-    movementDivider #(.SIM_MODE(SIM_MODE)) MOVEMENT_DIVIDER (
-        .clock(t_ff_clk), .reset(reset),
-        .rightRaw(rightRaw), .leftRaw(leftRaw), .upRaw(upRaw), .downRaw(downRaw),
-        .eraseRaw(erase), .drawRaw(draw),
-        .speedInc(speedInc), .speedDec(speedDec),
-        .right(right), .left(left), .up(up), .down(down),
-        .erase(right2), .draw(left2),
-        .speedOut(speedOut)
+    analogTranslator ANALOG_TRANSLATOR (
+        .white(white), .black(black), .brown(brown), .red(red),
+        .right(right), .left(left), .up(up), .down(down)
     );
 
+
+
     wire [31:0] r1, r2, r3, r4;
-    wire [inputs-1:0] memMappedIO = {{(inputs-7){1'b0}}, gameRst, right2, left2, down, up, left, right};
+    wire [inputs-1:0] memMappedIO = {{(inputs-7){1'b0}}, gameRst, erase, draw, down, up, left, right};
     wire [8191:0] framebuffer_unused;
 
     pipeline #(.inputs(inputs)) PIPELINE (
-        .clock(t_ff_clk), .reset(reset),
+        .clock(divClock), .reset(reset),
         .memMappedIO(memMappedIO),
         .framebuffer(framebuffer_unused),
         .r1(r1), .r2(r2), .r3(r3), .r4(r4)
@@ -57,7 +49,7 @@ module parent #(parameter inputs = 256, parameter SIM_MODE = 0)(
     );
 
     spi SPI (
-        .clock(t_ff_clk), .reset(reset),
+        .clock(halfClock), .reset(reset),
         .fb(fb),
         .sck(sck), .sda(sda), .res(res), .dc(dc), .cs(cs)
     );
